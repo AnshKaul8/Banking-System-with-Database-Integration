@@ -54,5 +54,8 @@ public void register(){
         }
 
     }
+    public boolean user_exist(String email){
+        String query = "SELECT * FROM user WHERE email = ?";
 
+}
 }
