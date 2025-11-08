@@ -27,11 +27,17 @@ public void register(){
         String email = scanner.nextLine();
         System.out.print("Password: ");
         String password = scanner.nextLine();
+        
+        //Error Handling
         if(User_exist(email)) {
             System.out.println("User Already Exists for this Email Address!!");
             return;
         }
+        
+        //SQL QUERY
         String register_query = "INSERT INTO User(full_name, email, password) VALUES(?, ?, ?)";
+
+        //Try-Catch Block
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(register_query);
             preparedStatement.setString(1, full_name);
@@ -47,7 +53,6 @@ public void register(){
             e.printStackTrace();
         }
 
-
     }
-    
+
 }
