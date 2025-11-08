@@ -31,8 +31,23 @@ public void register(){
             System.out.println("User Already Exists for this Email Address!!");
             return;
         }
+        String register_query = "INSERT INTO User(full_name, email, password) VALUES(?, ?, ?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(register_query);
+            preparedStatement.setString(1, full_name);
+            preparedStatement.setString(2, email);
+            preparedStatement.setString(3, password);
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows > 0) {
+                System.out.println("Registration Successfull!");
+            } else {
+                System.out.println("Registration Failed!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
-
-}
+    }
+    
 }
