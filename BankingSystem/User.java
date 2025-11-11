@@ -50,6 +50,7 @@ public void register(){
                 System.out.println("Registration Failed!");
             }
         } catch (SQLException e) {
+            // Prints if there is any Error
             e.printStackTrace();
         }
 
