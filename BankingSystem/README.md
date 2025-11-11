@@ -3,6 +3,12 @@
 Banking Management System (Java + JDBC + MySQL)
 
 Overview
+The Banking System with Database Integration aims to solve these challenges by introducing a structured and database-driven solution. 
+The Accounts module solves the issue of unique identification by generating and validating account numbers. The User module tackles the challenge of secure registration and login.
+The Account Manager module addresses real banking concerns like deposit, withdrawal, transfer of 
+funds between accounts, and balance checks. 
+Finally, the Banking App module ensures smooth integration by establishing a JDBC connection 
+and providing users with a menu-driven interface. 
 The Banking Management System is a Java-based project that simulates real-world banking operations,
 such as account creation, deposits, withdrawals, and balance inquiries. It uses JDBC (Java Database Connectivity) to interact with a MySQL database, 
 ensuring reliable data storage and retrieval. Designed with modularity and clarity in mind, the project demonstrates practical implementation of OOP principles and database integration in Java.
@@ -30,3 +36,11 @@ Compile and run BankingApp.java.
 
 Purpose
 This project is built for academic demonstration and learning — showcasing Java’s integration with SQL databases and real-world application of OOP design.
+
+Timeline
+To begin with, we would start by identifying the overall requirements of the system and 
+setting up the environment needed for Java and database connectivity. 
+Once the scope and objectives are clear, the next step would be to design 
+the database structure. This would include creating the necessary tables 
+for users, accounts, and transactions, so that the foundation for data 
+storage is properly established.
