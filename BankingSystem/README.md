@@ -2,7 +2,6 @@
  
 Banking Management System (Java + JDBC + MySQL)
 
-Overview
 The Banking System with Database Integration aims to solve these challenges by introducing a structured and database-driven solution. 
 The Accounts module solves the issue of unique identification by generating and validating account numbers. The User module tackles the challenge of secure registration and login.
 The Account Manager module addresses real banking concerns like deposit, withdrawal, transfer of 
