@@ -7,7 +7,7 @@ public class Accounts {
     private double balance;
     private int accNo;
     private String accountType;
-    //Different AccountTypes like:
+    //Different Account Types like:
     //Savings,Current,Fixed Deposit
 
     public Accounts(String name, double balance,String accountType) {
