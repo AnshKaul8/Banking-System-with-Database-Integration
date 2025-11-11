@@ -3,16 +3,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-//Class User declaration
-public class User {
-    private Connection connection;
-    private Scanner scanner;
 
-//Constructor Initialization
-    public User(Connection connection, Scanner scanner){
-        this.connection = connection;
-        this.scanner = scanner;
-    }
 
 //Register Function
 
@@ -27,7 +18,7 @@ public void register(){
         String password = scanner.nextLine();
         
         //Error Handling
-        // Checking if User Email already exists
+        // Checking if User with same Email already exists
     
         if(User_exist(email)) {
             System.out.println("User Already Exists for this Email Address!!");
@@ -35,7 +26,7 @@ public void register(){
         }
         
         //SQL QUERY
-        // Here wew are inserting a new user into the table
+        // Here we are inserting a new user into the table
         String register_query = "INSERT INTO users(full_name, email, password) VALUES(?, ?, ?)";
 
         //Try-With-Resources Block
