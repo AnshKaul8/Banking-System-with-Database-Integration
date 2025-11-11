@@ -6,11 +6,15 @@ public class Accounts {
     private String name;
     private double balance;
     private int accNo;
+    private String accountType;
+    //Different AccountTypes like:
+    //Savings,Current,Fixed Deposit
 
-    public Accounts(String name, double balance) {
+    public Accounts(String name, double balance,String accountType) {
         this.name = name;
         this.balance = balance;
         this.accNo = generate_account_number();
+        this.accountType = accountType;
     }
 
     public String getName() {
@@ -25,14 +29,21 @@ public class Accounts {
         return accNo;
     }
 
+    public String getAccountType(){
+        return accountType;
+    }
+
     // Opens a new account in the database
+    
     public void open_account(String name, double initialBalance) {
-        String query = "INSERT INTO accounts (name, balance) VALUES (?, ?)";
+        String query = "INSERT INTO accounts (name, balance, accountType) VALUES (?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
 
             ps.setString(1, name);
             ps.setDouble(2, initialBalance);
+            ps.setString(3, accountType); 
+            
             ps.executeUpdate();
             System.out.println("Account opened successfully for " + name);
 
