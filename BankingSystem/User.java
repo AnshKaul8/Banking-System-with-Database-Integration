@@ -27,12 +27,15 @@ public void register(){
         String password = scanner.nextLine();
         
         //Error Handling
+        // Checking if User Email already exists
+    
         if(User_exist(email)) {
             System.out.println("User Already Exists for this Email Address!!");
             return;
         }
         
         //SQL QUERY
+        // Here wew are inserting a new user into the table
         String register_query = "INSERT INTO users(full_name, email, password) VALUES(?, ?, ?)";
 
         //Try-With-Resources Block
