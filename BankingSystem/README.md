@@ -37,6 +37,9 @@ Purpose
 This project is built for academic demonstration and learning — showcasing Java’s integration with SQL databases and real-world application of OOP design.
 
 Timeline
+The development of the Banking System with Database Integration 
+will be carried out in a step-by-step manner, ensuring that each part of 
+the system is built gradually and integrated smoothly
 To begin with, we would start by identifying the overall requirements of the system and 
 setting up the environment needed for Java and database connectivity. 
 Once the scope and objectives are clear, the next step would be to design 
