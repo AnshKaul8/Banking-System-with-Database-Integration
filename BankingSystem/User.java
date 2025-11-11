@@ -8,6 +8,7 @@ public class User {
     private Connection connection;
     private Scanner scanner;
 
+//Constructor Initialization
     public User(Connection connection, Scanner scanner){
         this.connection = connection;
         this.scanner = scanner;
@@ -17,6 +18,7 @@ public class User {
 
 public void register(){
         scanner.nextLine();
+    //Taking User Details
         System.out.print("Full Name: ");
         String full_name = scanner.nextLine();
         System.out.print("Email: ");
