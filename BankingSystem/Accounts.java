@@ -36,6 +36,27 @@ public class Accounts {
     // Opens a new account in the database
     
     public void open_account(String name, double initialBalance) {
+
+        double minBalance;
+        switch(accountType.toLowerCase()){
+        case "savings":
+                minBalance = 1000;
+                break;
+        case "current":
+                minBalance = 5000;
+                break;
+        case "fixed deposit":
+                minBalance = 10000;
+                break;
+        default:
+                minBalance = 0;
+                break;
+        }
+
+        if (initialBalance < minBalance) {
+        System.out.println("Minimum balance for " + accountType + " account is " + minBalance);
+        return;
+    }
         String query = "INSERT INTO accounts (name, balance, accountType) VALUES (?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
