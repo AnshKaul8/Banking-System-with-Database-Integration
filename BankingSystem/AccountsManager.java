@@ -44,20 +44,25 @@ public class AccountsManager {
         }
     }
 
-    // Transfer money between accounts
+    // Transfer money between accounts (minimal logic)
     public void transfer_money(int fromAcc, int toAcc, double amount) {
-        try (Connection conn = DBConnection.getConnection()) {
-            conn.setAutoCommit(false);
+        double currentBalance = getBalance(fromAcc);
 
-            debit_money(fromAcc, amount);
-            credit_money(toAcc, amount);
-
-            conn.commit();
-            System.out.println("Transfer successful!");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (currentBalance < 0) {
+            System.out.println("Source account not found.");
+            return;
         }
+
+        if (currentBalance < amount) {
+            System.out.println("Insufficient balance.");
+            return;
+        }
+
+        // Perform debit and credit using existing methods
+        debit_money(fromAcc, amount);
+        credit_money(toAcc, amount);
+
+        System.out.println("Transfer successful!");
     }
 
     // Check account balance
@@ -81,12 +86,34 @@ public class AccountsManager {
 
     // Insert a new account into the database
     public void createAccount(Accounts account) {
-        String query = "INSERT INTO accounts (acc_no, name, balance) VALUES (?, ?, ?)";
+        double minBalance;
+        switch (account.getAccountType().toLowerCase()) {
+            case "savings":
+                minBalance = 1000;
+                break;
+            case "current":
+                minBalance = 5000;
+                break;
+            case "fixed deposit":
+                minBalance = 10000;
+                break;
+            default:
+                minBalance = 0;
+                break;
+        }
+
+        if (account.getBalance() < minBalance) {
+            System.out.println("Minimum balance for " + account.getAccountType() + " is " + minBalance);
+            return;
+        }
+
+        String query = "INSERT INTO accounts (acc_no, name, balance, accountType) VALUES (?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setInt(1, account.getAccNo());
             ps.setString(2, account.getName());
             ps.setDouble(3, account.getBalance());
+            ps.setString(4, account.getAccountType());
             int rows = ps.executeUpdate();
             if (rows > 0)
                 System.out.println("Account created successfully!");

@@ -65,9 +65,10 @@ public class BankingApp {
                     System.out.print("Enter initial deposit amount: ");
                     double initialDeposit = scanner.nextDouble();
                     scanner.nextLine();
-                    Accounts newAccount = new Accounts(name, initialDeposit);
+                    System.out.print("Enter account type (savings/current/fixed deposit): ");
+                    String accType = scanner.nextLine();
+                    Accounts newAccount = new Accounts(name, initialDeposit, accType);
                     manager.createAccount(newAccount);
-                    System.out.println("Account created successfully.");
                     break;
                 case 2:
                     System.out.print("Enter account ID: ");

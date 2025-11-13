@@ -16,7 +16,7 @@ public class Accounts {
         this.accNo = generate_account_number();
         this.accountType = accountType;
     }
-
+    
     public String getName() {
         return name;
     }
